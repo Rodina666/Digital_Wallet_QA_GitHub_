@@ -1,0 +1,97 @@
+{
+  "info": {
+    "_postman_id": "digital-wallet-qa-demo",
+    "name": "Digital Wallet QA - Mock API Checks",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Demo/mock API collection derived from the Digital Wallet QA Portfolio. No live financial service is connected."
+  },
+  "item": [
+    {
+      "name": "POST /login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"demo@test\"}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /balance - Missing Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/balance",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "balance"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST /transfer - Zero Amount",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"amount\":0}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/transfer",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transfer"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /transactions - Expired Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer expired"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/transactions",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "transactions"
+          ]
+        }
+      }
+    }
+  ]
+}
